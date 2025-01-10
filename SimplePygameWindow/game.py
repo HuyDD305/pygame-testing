@@ -26,6 +26,8 @@ class Game:
             'player': load_image('entities/player.png')
         }
 
+
+
         self.player = PhysicsEntity(self, 'player', (50, 50), (100, 15))
 
     def run(self):
@@ -51,7 +53,7 @@ class Game:
             # self.img_pos[0] += (self.up_down[1] - self.up_down[0]) * 5
             # self.screen.blit(self.img,
             #                  self.img_pos)  # day la toa do(x = 100, y = 200)(top left la (0, 0)),blit dung de paste cai surface nay len surface khac
-            print(self.assets)
+
             for event in pygame.event.get():  # Cai nay se tra lo mot cai list gom cac event
                 if event.type == pygame.QUIT:  # Moi cai event thi se co mot cai type, day la code de dung dau X thoat chuong trinh
                     pygame.quit()  # Tat pygame
