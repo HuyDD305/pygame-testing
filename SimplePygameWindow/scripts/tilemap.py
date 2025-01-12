@@ -15,10 +15,14 @@ class Tilemap:
             self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
 
     def render(self, surf):
+        for tile in self.offgrid_titles:
+            surf.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'])
+
         for loc in self.tilemap:
             tile = self.tilemap[loc]
             surf.blit(self.game.assets[tile['type']][tile['variant']],
                       (tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size))
             # vi cai self.game.assets[tile['type']] se tro thanh self.game.assets["grass"]]
             # sau do no nhin vao assets o trong file game, no se tra lai mot cai list
-            #boi vi function load_images tra lai mot cai list nen cai variant chinh la cai index cua cai list nay
+            # boi vi function load_images tra lai mot cai list nen cai variant chinh la cai index cua cai list nay
+
