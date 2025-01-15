@@ -45,7 +45,11 @@ class Game:
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], 0))
             self.player.render(self.display)
 
-            print(self.tilemap.physics_rects_around(self.player.pos))
+            print(f"Tiles around player: {self.tilemap.tiles_around(self.player.pos)}")
+            for i in self.tilemap.tiles_around(self.player.pos):
+                if i['type'] == 'stone':
+                    break
+            print(f"Physics rects: {self.tilemap.physics_rects_around(self.player.pos)}")
 
             # # tao mot cai rect nhung cai rect nay co the hieu nhu la logic de phat hien collision'
             # # cai rect nay se they doi vi tri theo cai img
