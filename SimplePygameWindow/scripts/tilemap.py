@@ -18,7 +18,7 @@ class Tilemap:
 
         for i in range(10):
             self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos': (3 + i, 10)}
-            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
+            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': ( 10, 5 + i)}
             # dua 10 stones va 10 grass vao trong cai dict() voi cac vi tri nhu sao
             # grass se co cac vi tri tu x = 3 -> x = 12 va y = 10
             # stone se co cac vi tri tu y = 5 -> y = 14 va x = 10
@@ -34,7 +34,7 @@ class Tilemap:
         return tiles
 
     def physics_rects_around(self, pos):
-        """Function nay tra ve mot cai list bao gom cac list cua cac vat xung quanh"""
+        """Function nay tra ve mot cai list bao gom cac rect cua cac vat xung quanh"""
         rects = []
         for tile in self.tiles_around(pos):
             if tile['type'] in PHYSICS_TILES:
