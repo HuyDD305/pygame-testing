@@ -18,7 +18,7 @@ class Tilemap:
 
         for i in range(10):
             self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos': (3 + i, 10)}
-            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': ( 10, 5 + i)}
+            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
             # dua 10 stones va 10 grass vao trong cai dict() voi cac vi tri nhu sao
             # grass se co cac vi tri tu x = 3 -> x = 12 va y = 10
             # stone se co cac vi tri tu y = 5 -> y = 14 va x = 10
@@ -43,14 +43,15 @@ class Tilemap:
                                 self.tile_size))
         return rects
 
-    def render(self, surf):
+    def render(self, surf, offset=(0, 0)):
         for tile in self.offgrid_titles:
-            surf.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'])
+            surf.blit(self.game.assets[tile['type']][tile['variant']],
+                      (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
 
         for loc in self.tilemap:
             tile = self.tilemap[loc]
             surf.blit(self.game.assets[tile['type']][tile['variant']],
-                      (tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size))
+                      (tile['pos'][0] * self.tile_size - offset[0], tile['pos'][1] * self.tile_size - offset[1]))
             # vi cai self.game.assets[tile['type']] se tro thanh self.game.assets["grass"]]
             # sau do no nhin vao assets o trong file game, no se tra lai mot cai list
             # boi vi function load_images tra lai mot cai list nen cai variant chinh la cai index cua cai list nay

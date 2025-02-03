@@ -35,8 +35,6 @@ class PhysicsEntity:
                 aTest = tilemap.tilemap['10;9']['pos']
                 pos1 = aTest[0] * tilemap.tile_size
                 pos2 = aTest[1] * tilemap.tile_size
-                if rect.x == pos1 and rect.y == pos2:
-                    print("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 print(f"before x: {self.pos[0]}")
                 print(entity_rect.x)
                 self.pos[0] = entity_rect.x
@@ -66,6 +64,6 @@ class PhysicsEntity:
         if self.collisions['down'] or self.collisions['up']:
             self.velocity[1] = 0
 
-    def render(self, surf):
+    def render(self, surf, offset=(0, 0)):
         """Paste the object onto the surface """
-        surf.blit(self.game.assets['player'], self.pos)
+        surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
